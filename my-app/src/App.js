@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import axios from "axios";
 
 import "./App.css";
 
@@ -19,26 +18,17 @@ class App extends Component {
     this.setState({ user });
   };
 
-  searchUser = async () => {
-    const { user } = this.state;
-    this.setState({ loading: true });
-
-    try {
-      const { data: repos } = await axios.get(
-        `https://api.github.com/users/${user}/repos`
-      );
-
-      console.log(repos);
-
-      this.setState({ repos, error: "", loading: false });
-    } catch (error) {
-      this.setState({
-        error: "Usuário não encontrado",
-        repos: [],
-        loading: false
-      });
-    }
-  };
+  searchUser = async() =>{
+    const {user} = this.state
+    fetch(`https://api.github.com/users/${user}/repos`)
+    .then((res) => res.json())
+    .then(findresponse => {
+        console.log(findresponse)
+        this.setState({
+            repos: findresponse
+        })
+    });
+  }
 
   render() {
     const { user, repos, error, loading } = this.state;
