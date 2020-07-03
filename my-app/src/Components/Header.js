@@ -5,7 +5,10 @@ import './style.css'
 const Header = props =>{
     return(
         <header>
-            {props.children}
+            <div className="logo">
+                {props.children}
+
+            </div>
         </header>
     )
 }

@@ -13,8 +13,7 @@ const Form = ({ user, loading, error, buttonAction, changeUser }) => (
       onChange={e => changeUser(e.target.value)}
     />
     <button className="btn-search" onClick={buttonAction}>
-      {/* <img src={Lupa} className=" img-btn"/> */}
-      Buscar
+      <img src={Lupa} className="lupa" />
     </button>
   </div>
 );
